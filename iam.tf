@@ -1,9 +1,9 @@
 data "aws_iam_policy_document" "assume_role" {
   statement {
     effect = "Allow"
-    
+
     principals {
-      type = "Service"
+      type        = "Service"
       identifiers = ["ec2.amazonaws.com"]
     }
 
@@ -13,8 +13,8 @@ data "aws_iam_policy_document" "assume_role" {
 }
 
 resource "aws_iam_role" "ec2-bastion-role" {
-  name = "ec2-bastion-role"
-  path = "/"
+  name               = "ec2-bastion-role"
+  path               = "/"
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
 }
 
